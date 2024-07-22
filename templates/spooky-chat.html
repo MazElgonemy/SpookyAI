@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}
+SpookyAI - SpookyChat
+{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/spooky-chat.css') }}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+
+    $(document).ready(function() {
+
+        $('#chat-form').on('submit', function(event) {
+
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Get the user's message
+            const userMessage = $('#message-input').val();
+
+            // Add the user's message to the messages list
+            const messageList = $('.messages');
+            const userMessageElement = $('<div></div>').addClass('message user').text(userMessage);
+            messageList.append(userMessageElement);
+
+            // Clear the input field
+            $('#message-input').val('');
+
+            // Scroll to the bottom of the chat box
+            $('.chat-box').scrollTop(messageList.prop('scrollHeight'));
+
+
+             // Create a loading message element
+            const loadingMessageElement = $('<div></div>').addClass('message bot loading').text('Bot is typing');
+            messageList.append(loadingMessageElement);
+            loadingMessageElement[0].scrollIntoView({ behavior: 'smooth' });
+
+            // Dot dot dot effect
+            let loadingInterval = setInterval(() => {
+                const currentText = loadingMessageElement.text();
+                if (currentText.endsWith('...')) {
+                    loadingMessageElement.text('Bot is typing');
+                } else {
+                    loadingMessageElement.text(currentText + '.');
+                }
+            }, 500);
+
+            // Make an AJAX request to get the bot response
+             $.ajax({
+                    url: '/api-get-spooky-chat-memory',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ message: userMessage }),
+                    success: function(response) {
+                        clearInterval(loadingInterval); // Stop the loading dots
+                        loadingMessageElement.remove(); // Remove the loading message
+                        const botResponse = response.botMessage;
+                        const botMessageElement = $('<div></div>').addClass('message bot').text(botResponse);
+                        messageList.append(botMessageElement);
+
+                        // Scroll to the bottom of the chat box
+                        userMessageElement[0].scrollIntoView({ behavior: 'smooth' });
+                        botMessageElement[0].scrollIntoView({ behavior: 'smooth' });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        // Handle error appropriately
+                    }
+             });
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="chat-container">
+        <div class="chat-box">
+            <div class="messages">
+                <!-- Messages will be displayed here -->
+<!--                <div class="message bot">Ah, welcome... what dark desires bring you to this shadowed place?</div>-->
+            </div>
+            <form action="{{ url_for('spooky_chat') }}" method="post"  class="message-form" id="chat-form">
+                <input type="text" name="user-message" id="message-input" placeholder="Type your message here..." autocomplete="off">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
+

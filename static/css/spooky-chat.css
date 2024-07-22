@@ -1,0 +1,114 @@
+body {
+    background-color:#5F5F56;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* full height of the viewport */
+    margin: 0;
+    justify-content: center; /* centers the content vertically */
+    align-items: center; /* centers the content horizontally */
+    text-align: center;
+    font-family: "Eater", serif;
+    font-weight: 500;
+    letter-spacing: 4px;
+    line-height: 3;
+    font-style: normal;
+    position: relative;
+    overflow: hidden;
+    padding-top: 70px; /* Adjust based on navbar height */
+    padding-bottom: 70px; /* Adjust based on footer height */
+}
+
+body::before {
+    content: ""; /* Necessary for pseudo-elements */
+    position: fixed; /* Changed from absolute to fixed */
+    top: 0;
+    left: 0;
+    width: 100%; /* Covers the entire body */
+    height: 100%; /* Covers the entire body */
+    background-image: url('/static/images/kitchen.png'); /* Path to your image file */
+    background-size: cover; /* Ensures the background covers the entire viewport */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+    opacity: 0.3; /* Adjusts the opacity of the background image */
+    z-index: -1; /* Ensures it stays behind the content */
+}
+
+.chat-container {
+
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 0;
+    font-style: normal
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    min-width:30vw;
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 12px;
+    line-height: 24px;
+    padding: 10px;
+    border-radius: 10px;
+    width: fit-content;
+    max-width: 80%;
+}
+
+.bot {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    align-self: flex-start;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.user {
+    background:#cce5ff;
+    color: #004085;
+    align-self: flex-start;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    align-self: flex-end;
+}
+
+.message-form {
+    display: flex;
+    padding: 10px;z
+}
+
+.message-form input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border:none;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.message-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.message-form button:hover {
+    background-color: #0056b3;
+}

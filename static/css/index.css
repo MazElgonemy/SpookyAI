@@ -1,0 +1,429 @@
+body {
+    background-color:#5F5F56;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* full height of the viewport */
+    margin: 0;
+    justify-content: center; /* centers the content vertically */
+    align-items: center; /* centers the content horizontally */
+    text-align: center;
+    font-family: "Eater", serif;
+    font-weight: 500;
+    letter-spacing: 4px;
+    line-height: 3;
+    font-style: normal;
+    position: relative;
+    overflow: hidden;
+    padding-top: 70px; /* Adjust based on navbar height */
+    padding-bottom: 70px; /* Adjust based on footer height */
+}
+
+body::before {
+    content: ""; /* Necessary for pseudo-elements */
+    position: fixed; /* Changed from absolute to fixed */
+    top: 0;
+    left: 0;
+    width: 100%; /* Covers the entire body */
+    height: 100%; /* Covers the entire body */
+    background-image: url('/static/images/hallway.png'); /* Path to your image file */
+    background-size: cover; /* Ensures the background covers the entire viewport */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+    opacity: 0.3; /* Adjusts the opacity of the background image */
+    z-index: -1; /* Ensures it stays behind the content */
+}
+
+
+
+.centered {
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centered p {
+font-size:23px;
+}
+
+.bottom-centered p {
+font-size:23px;
+}
+
+.bottom-centered p:hover{
+font-size:24px;
+}
+
+.bottom-centered {
+  text-align: center;
+  position: absolute;
+  bottom: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carousel-item {
+  height:100vh;
+  width:100vw;
+  background-color: rgba(0, 0, 0, 0.5); /* Adds a semi-transparent dark background to each slide */
+  color: white; /* Ensures text is white for contrast */
+  padding: 20px; /* Gives some padding within the carousel item */
+  border-radius: 10px; /* Optional: Adds rounded corners */
+}
+
+
+/* below manages responsiveness */
+
+@media only screen and (max-height: 350px) {
+
+
+    .centered {
+    display:none;
+    }
+
+}
+
+
+
+@media (max-width: 1600px) and (min-height:350px) {
+
+
+    .centered {
+        top:28%;
+
+    }
+
+    .bottom-centered {
+        bottom:13%;
+    }
+
+    .centered p{
+         font-size:23px;
+    }
+
+    .bottom-centered p{
+        font-size:25px;
+    }
+
+
+
+}
+
+
+@media (max-width: 1600px) and (min-height:650px) {
+
+
+    .centered {
+        top:28%;
+
+    }
+
+    .bottom-centered {
+        bottom:13%;
+    }
+
+    .centered p{
+         font-size:24px;
+    }
+
+    .bottom-centered p{
+        font-size:26px;
+    }
+
+
+
+}
+
+@media (max-width: 1200px) and (min-height:100px) {
+
+
+    .centered {
+        top:30%;
+
+    }
+
+    .centered p{
+         font-size:10px;
+    }
+
+    .centered p{
+             letter-spacing: 2px;
+    }
+
+    .bottom-centered {
+        bottom:8%;
+    }
+
+    .bottom-centered p{
+        font-size:10px;
+    }
+
+}
+
+@media (max-width: 1200px) and (min-height:500px) {
+
+
+    .centered {
+        top:28%;
+
+    }
+
+    .centered p{
+         font-size:19px;
+    }
+
+    .bottom-centered {
+        bottom:8%;
+    }
+
+    .bottom-centered p{
+        font-size:19px;
+    }
+
+}
+
+@media (max-width: 1200px) and (min-height:750px) {
+
+
+    .centered {
+        top:27%;
+
+    }
+
+    .centered p{
+         font-size:26px;
+    }
+
+    .bottom-centered {
+        bottom:12%;
+    }
+
+    .bottom-centered p{
+        font-size:26px;
+    }
+
+}
+
+@media (max-width: 1200px) and (min-height:1000px) {
+
+
+    .centered {
+        top:32%;
+
+    }
+
+    .centered p{
+         font-size:28px;
+    }
+
+    .bottom-centered {
+        bottom:15%;
+    }
+
+    .bottom-centered p{
+        font-size:30px;
+    }
+
+}
+
+@media (max-width: 900px) and (min-height:700px) {
+
+
+    .centered {
+        top:30%;
+
+    }
+
+    .centered p{
+         font-size:20px;
+    }
+
+    .bottom-centered {
+        bottom:15%;
+    }
+
+    .bottom-centered p{
+        font-size:22px;
+    }
+
+}
+
+
+@media (max-width: 900px) and (min-height:1000px) {
+
+
+    .centered {
+        top:34%;
+
+    }
+
+    .centered p{
+         font-size:23px;
+    }
+
+    .bottom-centered {
+        bottom:15%;
+    }
+
+    .bottom-centered p{
+        font-size:26px;
+    }
+
+}
+
+
+
+@media (max-width: 700px) and (min-height:350px) {
+
+
+    .centered {
+        top:26%;
+
+        }
+    .centered p{
+         font-size:11px;
+    }
+
+    .bottom-centered {
+        bottom:10%;
+    }
+
+    .bottom-centered p{
+        font-size: 11px;
+    }
+
+}
+
+
+@media (max-width: 700px) and (min-height:450px) {
+
+
+    .centered {
+        top:29%;
+
+        }
+    .centered p{
+         font-size:13px;
+    }
+
+    .bottom-centered {
+        bottom:10%;
+    }
+
+    .bottom-centered p{
+        font-size: 15px;
+    }
+
+}
+
+
+@media (max-width: 700px) and (min-height:720px) {
+
+
+    .centered {
+        top:30%;
+
+        }
+    .centered p{
+         font-size:16px;
+    }
+
+    .bottom-centered {
+        bottom:15%;
+    }
+
+    .bottom-centered p{
+        font-size: 16px;
+    }
+
+}
+
+
+@media (max-width: 450px) and (min-height:350px) {
+
+
+    .centered {
+        top:30%;
+
+        }
+    .centered p{
+         font-size:7px;
+    }
+
+    .bottom-centered {
+        bottom:10%;
+    }
+
+    .bottom-centered p{
+        font-size: 11px;
+    }
+
+}
+
+
+@media (max-width: 450px) and (min-height:600px) {
+
+
+    .centered {
+        top:28%;
+
+        }
+    .centered p{
+         font-size:12px;
+    }
+
+    .bottom-centered {
+        bottom:18%;
+    }
+
+    .bottom-centered p{
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 450px) and (min-height:844px) {
+
+
+    .centered {
+        top:27%;
+
+        }
+    .centered p{
+         font-size:15px;
+    }
+
+    .bottom-centered {
+        bottom:20%;
+    }
+
+    .bottom-centered p{
+        font-size: 16px;
+    }
+
+}
+
+
+@media (max-width: 350px) and (min-height:800px) {
+
+
+    .centered {
+        top:26%;
+
+        }
+    .centered p{
+         font-size:12px;
+    }
+
+    .bottom-centered {
+        bottom:20%;
+    }
+
+    .bottom-centered p{
+        font-size: 13px;
+    }
+
+}
+
+

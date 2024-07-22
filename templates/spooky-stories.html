@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}
+SpookyAI - SpookyStories
+{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/spooky-stories.css') }}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+   <script>
+
+<!--Below manages the loading screen-->
+
+       $(document).ready(function() {
+            var content = "Generating story, please wait...";
+            var ele = $('#loadingMessage h1');
+            var charIndex = 0;
+
+            function typeWriter() {
+                if (charIndex < content.length) {
+                    ele.append(content.charAt(charIndex));
+                    charIndex++;
+                    setTimeout(typeWriter, 120);
+                } else {
+                  setTimeout(resetTyping, 100);
+                }
+            }
+
+             function resetTyping() {
+                ele.text('');
+                charIndex = 0;
+                typeWriter();
+             }
+
+            typeWriter();
+        });
+
+<!--Below gets data from the stories API and types out it out-->
+
+    $(document).ready(function () {
+            $.ajax({
+                url: "/api-get-spooky-stories",
+                type: "GET",
+                dataType: "json",
+                success: async function(data) {
+                    $('.content h1').text('');
+                    $('.content p').text('');
+                    $('#loadingScreen').hide();
+                    await typeWriter(data.title, $('.content h1'), 120);
+                    await sleep(4000);
+                    await typeWriter(data.story, $('.content p'), 120);
+                },
+                error: function() {
+                    $('.content h1').text("Error");
+                    $('.content p').text("Failed to load story.");
+                    $('#loadingScreen').hide();
+                }
+            });
+
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            function typeWriter(text, elem, delay) {
+                let i = 0;
+                function typing() {
+                    if (i < text.length) {
+                        elem.append(text.charAt(i));
+                        i++;
+                        setTimeout(typing, delay);
+                    }
+                }
+                typing();
+            }
+    });
+
+           <!--Below manages the save/download method -->
+
+    window.jsPDF = window.jspdf.jsPDF;
+
+    function saveAsPDF() {
+        console.log("saveAsPDF called");
+        var content = document.getElementById("contentToSave");
+
+        if (content) {
+            console.log("Content found:", content.innerHTML);
+
+            var doc = new jsPDF('p', 'mm', 'a4');
+            var pageWidth = doc.internal.pageSize.getWidth();
+            var pageHeight = doc.internal.pageSize.getHeight();
+            var margin = 10;
+            var maxLineWidth = pageWidth - 2 * margin;
+            var yOffset = 20;
+            var h1LineHeight = 10;
+            var pLineHeight = 12;
+
+            <!--Below gets the H1 elements  -->
+
+            var h1Elements = content.getElementsByTagName('h1');
+            doc.setFontSize(16);
+            doc.setTextColor(255, 0, 0);
+
+            for (var i = 0; i < h1Elements.length; i++) {
+                var h1Text = h1Elements[i].textContent;
+                var h1Lines = doc.splitTextToSize(h1Text, maxLineWidth);
+                for (var j = 0; j < h1Lines.length; j++) {
+                    var textWidth = doc.getTextWidth(h1Lines[j]);
+                    var xPosition = (pageWidth - textWidth) / 2;
+                    doc.text(h1Lines[j], xPosition, yOffset);
+                    doc.setDrawColor(255, 0, 0);
+                    doc.line(xPosition, yOffset + 2, xPosition + textWidth, yOffset + 2);  <!-- Underlines in red -->
+                    yOffset += h1LineHeight;
+                }
+                yOffset += h1LineHeight;
+            }
+
+            <!--Below gets the p elements  -->
+
+            var pElements = content.getElementsByTagName('p');
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+
+            for (var k = 0; k < pElements.length; k++) {
+                var pText = pElements[k].textContent;
+                var pLines = doc.splitTextToSize(pText, maxLineWidth);
+
+                for (var l = 0; l < pLines.length; l++) {
+                    if (yOffset + pLineHeight > pageHeight - margin) {
+                        doc.addPage();
+                        yOffset = margin;
+                    }
+                    doc.text(pLines[l], margin, yOffset);
+                    yOffset += pLineHeight;
+                }
+                yOffset += pLineHeight;
+            }
+
+            doc.save('download.pdf');
+        } else {
+            console.log("Content not found");
+        }
+    }
+
+
+    </script>
+{% endblock %}
+
+    {% block content %}
+
+<!--    <audio autoplay loop>-->
+<!--        <source src="/static/audio/guitar.mp4" type="audio/mpeg">-->
+<!--    </audio>-->
+
+     <div id="loadingScreen" >
+            <div id="loadingMessage">
+
+
+
+            <noscript>
+                <p style="position: relative; top: 10%; font-family: sans-serif; font-size: 15px; letter-spacing:1px;color:black;">
+                Please note: You have switched off JavaScript on your browser. Many features in this site operate with JavaScript therefore you will experience limited functionality.
+                </p>
+            </noscript>
+
+                <h1>  </h1>
+
+                <h2> Please note these stories are not real! They are AI generated. </h2>
+
+             </div>
+    </div>
+
+    <div class="icon-container">
+
+        <a href="{{ url_for('spooky_stories') }}">
+            <i class="fa-solid fa-repeat"></i>
+        </a>
+        <a href="{{ url_for('index') }}">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <a href="#" onclick="saveAsPDF()">
+             <i class="fa-solid fa-download"></i>
+        </a>
+    </div>
+
+    <div class="content" id="contentToSave">
+
+       <h1>  </h1>
+
+        <p>
+
+        </p>
+    </div>
+
+{% endblock %}
+

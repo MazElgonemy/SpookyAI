@@ -1,0 +1,66 @@
+body {
+    background-color:#5F5F56;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* full height of the viewport */
+    margin: 0;
+    justify-content: center; /* centers the content vertically */
+    align-items: center; /* centers the content horizontally */
+    text-align: center;
+    font-family: "Eater", serif;
+    font-weight: 500;
+    letter-spacing: 4px;
+    line-height: 3;
+    font-style: normal;
+    position: relative;
+    overflow: hidden;
+    padding-top: 70px; /* Adjust based on navbar height */
+    padding-bottom: 70px; /* Adjust based on footer height */
+}
+
+body::before {
+    content: ""; /* Necessary for pseudo-elements */
+    position: fixed; /* Changed from absolute to fixed */
+    top: 0;
+    left: 0;
+    width: 100%; /* Covers the entire body */
+    height: 100%; /* Covers the entire body */
+    background-image: url('/static/images/path.jpg'); /* Path to your image file */
+    background-size: cover; /* Ensures the background covers the entire viewport */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+    opacity: 0.3; /* Adjusts the opacity of the background image */
+    z-index: -1; /* Ensures it stays behind the content */
+}
+
+.centered {
+    position: absolute;
+    bottom: 45%;
+    padding: 20px;
+
+}
+
+.bottom-centered {
+    position: absolute;
+    bottom: 20%;
+    padding: 20px;
+    width: 80%;
+}
+
+#enter p span:hover {
+    font-size:32px;
+}
+
+
+
+/* below manages responsiveness */
+
+@media only screen and (max-height: 350px) {
+
+
+    .centered {
+    display:none;
+    }
+
+}
+

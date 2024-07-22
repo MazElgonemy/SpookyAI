@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+SpookyAI - SpookyChat
+{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/spooky-facts-options.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="top">
+  Dare to delve deeper? Choose a realm to unveil its chilling truths...
+</div>
+<div class="bottom">
+    <div class="left">
+    <a href="{{ url_for('spooky_facts_haunted') }}">
+    haunted locations
+    </a>
+  </div>
+  <div class="middle">
+    <a href="{{ url_for('spooky_facts_creatures') }}">
+    mysterious creatures
+    </a>
+  </div>
+  <div class="right">
+    <a href="{{ url_for('spooky_facts_mysteries') }}">
+    unsolved mysteries
+    </a>
+  </div>
+</div>
+
+
+{% endblock %}
+

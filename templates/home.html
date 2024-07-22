@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+SpookyAI
+{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="centered">
+        <p> welcome to <span class="highlight">spookyAI</span> <br>
+            enter at your own peril </p>
+    </div>
+    <div class="bottom-centered" id="enter">
+        <a href="{{ url_for('index') }}">
+            <p><span class="highlight">
+                <span class="letter">e</span>
+                <span class="letter">n</span>
+                <span class="letter">t</span>
+                <span class="letter">e</span>
+                <span class="letter">r</span>
+            </span></p>
+        </a>
+    </div>
+{% endblock %}
+

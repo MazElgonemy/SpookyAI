@@ -1,0 +1,298 @@
+/* below sets up animation */
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+body p {
+    color:white;
+    font-size:30px;
+}
+
+body a {
+    color:#FF0000;
+    text-decoration:none;
+}
+
+.highlight {
+    color:#FF0000;
+}
+
+
+/* Below manages loading screen style */
+
+#loadingScreen {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 9999;
+}
+
+#loadingMessage {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+
+}
+
+#loadingMessage h1 {
+    font-size:16px;
+    line-height:20px;
+    line-spacing:20px;
+    font-weight:500;
+}
+
+#loadingMessage h2 {
+    font-weight:500;
+    line-height:26px;
+    margin-top:60px;
+    font-size:12px;
+}
+
+/* Ensures newlines are created  */
+
+.content p {
+    white-space: pre-wrap;
+}
+
+
+/* below creates "enter" animation */
+
+.letter {
+    display: inline-block; /* Allows transform to work on inline elements */
+    animation: wiggle 0.7s ease-in-out infinite;
+    letter-spacing:0px;
+}
+
+
+.letter:nth-child(1) { animation-delay: 0s; }
+.letter:nth-child(2) { animation-delay: 0.1s; }
+.letter:nth-child(3) { animation-delay: 0.2s; }
+.letter:nth-child(4) { animation-delay: 0.3s; }
+.letter:nth-child(5) { animation-delay: 0.4s; }
+
+
+/* below is navbar css */
+
+.navbar {
+    background-color: #252525;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 0 10px;
+}
+
+.navbar .logo {
+    flex-grow: 0; /* Keeps logo size fixed */
+}
+
+.navbar a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.9s ease, color 0.3s ease;
+    border-radius:20px;
+
+}
+
+.navbar-links {
+    display: flex;
+    flex-grow: 1; /* Allows links to fill space */
+    justify-content: space-evenly;
+}
+
+.navbar-links a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* below is icons css */
+
+.icon-container {
+    text-align:center;
+    position:absolute;
+    top:11%;
+    right:60%;
+
+}
+
+.icon-container a{
+    font-size:20px;
+    color:white;
+    padding:10px;
+
+}
+
+.icon-container i:hover {
+    font-size:23px;
+    color:#A9A9A9;
+}
+
+/* below is footer css */
+
+.footer-content {
+    background-color: #252525;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content p {
+    margin: 0 20px; /* Adds more space for the border */
+    font-size: 13px;
+    display: flex;
+    align-items: center; /* Centers text vertically if lines are taller than text */
+}
+
+.footer-content a p {
+    padding-left:15px;
+    border-radius:20px;
+    transition: background-color 0.9s ease, color 0.3s ease;
+
+}
+
+.footer-content a p:hover {
+    background-color: #ddd;
+    color: black;
+
+}
+
+
+.navbar-links .larger-screens {
+    display: inline;
+}
+
+.navbar-links .smaller-screens {
+    display: none;
+}
+
+.logo img {
+    height:80px;
+ }
+
+/* below manages responsiveness */
+
+@media only screen and (max-width: 600px) {
+
+    body p {
+    font-size:20px;
+    }
+
+    .footer-content p {
+    font-size: 8px;
+    }
+
+    .logo img {
+    height:60px;
+ }
+
+
+}
+
+@media only screen and (max-width: 400px) {
+
+    body p {
+    font-size:15px;
+    }
+
+    .logo img {
+        height:40px;
+ }
+
+}
+
+@media only screen and (max-height: 600px) {
+
+    body p {
+    font-size:20px;
+    }
+
+    .footer-content p {
+    font-size: 8px;
+    }
+
+}
+
+@media only screen and (max-height: 350px) {
+
+    body p {
+    font-size:15px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+
+    .navbar a {
+        font-size:9px;
+        padding:0px;
+    }
+
+    .navbar-links .larger-screens {
+        display: none;
+    }
+
+    .navbar-links .smaller-screens {
+        display: inline;
+    }
+
+    #loadingMessage h1 {
+        font-size:12px;
+    }
+
+    #loadingMessage h2 {
+        font-size:8px;
+    }
+}
+
+@media only screen and (max-width: 570px) {
+
+    .icon-container {
+        font-size:15px;
+        right:33%;
+    }
+
+}
+
+
+@media only screen and (min-width: 1300px) {
+
+    .footer-content a p {
+        padding-left:40px;
+        padding-right:30px;
+
+    }
+
+
+@media only screen and (max-width: 700px) {
+
+
+}

@@ -1,0 +1,4 @@
+body::before {
+    background-image: url('/static/images/library.png'); /* Path to your image file */
+}
+

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}
+SpookyAI
+{% endblock %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!--below is carousel-->
+
+<div id="textCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <!-- Slide 2 -->
+      <div class="centered">
+        <p> Dare to hear whispers from the shadows? <br>
+            Gather 'round for some chilling tales...</p>
+      </div>
+      <div class="bottom-centered">
+          <a href="{{ url_for('spooky_stories') }}">
+                <p><span class="highlight">
+                    <span class="letter">t</span><span class="letter">e</span><span class="letter">l</span><span class="letter">l</span>
+                    <span class="letter"> </span><span class="letter">m</span><span class="letter">e</span><span class="letter"> </span>
+                    <span class="letter">s</span><span class="letter">p</span><span class="letter">o</span><span class="letter">o</span><span class="letter">k</span><span class="letter">y</span><span class="letter"> </span>
+                  <span class="letter">s</span><span class="letter">t</span><span class="letter">o</span><span class="letter">r</span><span class="letter">i</span><span class="letter">e</span><span class="letter">s</span>
+                </span></p>
+          </a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <!-- Slide 2 -->
+          <div class="centered">
+            <p> Dare to uncover the truths that nightmares are made of?
+                 Venture forth for some spine-chilling facts...</p>
+              <br>
+          </div>
+          <div class="bottom-centered">
+              <a href="{{ url_for('spooky_facts_options') }}">
+                    <p><span class="highlight">
+                        <span class="letter">t</span><span class="letter">e</span><span class="letter">l</span><span class="letter">l</span>
+                        <span class="letter"> </span><span class="letter">m</span><span class="letter">e</span><span class="letter"> </span>
+                        <span class="letter">s</span><span class="letter">p</span><span class="letter">o</span><span class="letter">o</span><span class="letter">k</span><span class="letter">y</span><span class="letter"> </span>
+                      <span class="letter">f</span><span class="letter">a</span><span class="letter">c</span><span class="letter">t</span><span class="letter">s</span>
+                    </span></p>
+              </a>
+          </div>
+    </div>
+    <div class="carousel-item">
+      <!-- Slide 3 -->
+          <div class="centered">
+            <p> Care to exchange words with the unseen?<br>
+                 Whisper your thoughts, and I shall respond from the shadows...</p>
+          </div>
+          <div class="bottom-centered">
+              <a href="{{ url_for('spooky_chat') }}">
+                    <p><span class="highlight">
+                        <span class="letter">l</span><span class="letter">e</span><span class="letter">t</span><span class="letter">s</span>
+                        <span class="letter">h</span><span class="letter">a</span><span class="letter">v</span><span class="letter">e</span>
+                        <span class="letter"> </span><span class="letter">a</span><span class="letter"></span>
+                        <span class="letter">s</span><span class="letter">p</span><span class="letter">o</span><span class="letter">o</span><span class="letter">k</span><span class="letter">y</span>
+                        <span class="letter">c</span><span class="letter">h</span><span class="letter">a</span><span class="letter">t</span>
+                    </span></p>
+              </a>
+          </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#textCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#textCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
+{% endblock %}
+

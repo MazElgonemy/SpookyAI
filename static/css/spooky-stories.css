@@ -1,0 +1,133 @@
+body {
+    background-color:#484A44;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* full height of the viewport */
+    margin: 0;
+    justify-content: center; /* centers the content vertically */
+    align-items: center; /* centers the content horizontally */
+    text-align: center;
+    font-family: "Eater", serif;
+    font-weight: 500;
+    letter-spacing: 4px;
+    line-height: 3;
+    font-style: normal;
+    position: relative;
+    overflow: hidden;
+    padding-top: 70px; /* Adjust based on navbar height */
+    padding-bottom: 70px; /* Adjust based on footer height */
+}
+
+body::before {
+    content: ""; /* Necessary for pseudo-elements */
+    position: fixed; /* Changed from absolute to fixed */
+    top: 0;
+    left: 0;
+    width: 100%; /* Covers the entire body */
+    height: 100%; /* Covers the entire body */
+    background-image: url('/static/images/living_room.png'); /* Path to your image file */
+    background-size: cover; /* Ensures the background covers the entire viewport */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+    opacity: 0.2; /* Adjusts the opacity of the background image */
+    z-index: -1; /* Ensures it stays behind the content */
+}
+.content {
+    position: absolute;
+    top: 20%;
+    color:white;
+    font-size:12px;
+    width: 50%; /* Responsive width */
+    height:80%;
+    overflow-y:auto;
+    padding: 50px;
+    text-align: center; /* Center text inside the div */
+}
+
+
+
+.content h1 {
+    font-family: "Baskervville", serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color:#FF0000;
+    font-size:24px;
+    text-decoration:underline;
+    line-height: 1.5;
+    margin-bottom:40px;
+
+}
+
+.content p {
+    text-align: justify;
+    font-family: "Baskervville", serif;
+    font-size:20px;
+    line-height: 2.4;
+    padding:10px;
+    margin-bottom:200px;
+    letter-spacing: 1px;
+}
+
+
+
+ @media only screen and (max-width: 1300px) {
+
+    .content {
+        width:70%;
+    }
+
+
+}
+
+
+
+ @media only screen and (max-width: 900px) {
+
+    .content {
+        width:70%;
+    }
+
+    .content h1{
+        font-size:20px;
+    }
+
+    .content p {
+        line-height: 2;
+    }
+
+}
+
+
+ @media only screen and (max-width: 700px) {
+
+    .content {
+        width:80%;
+    }
+
+    .content h1{
+        font-size:20px;
+    }
+
+    .content p {
+        letter-spacing: 0.5px;
+        line-height: 2;
+    }
+
+}
+
+
+ @media only screen and (max-width: 450px) {
+
+    .content {
+        width:95%;
+    }
+
+    .content h1{
+        font-size:20px;
+    }
+
+    .content p {
+        line-height:1.7;
+    }
+
+}
