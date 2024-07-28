@@ -18,6 +18,10 @@ body {
     padding-bottom: 70px; /* Adjust based on footer height */
 }
 
+.bottom {
+  letter-spacing: 1px;
+}
+
 body::before {
     content: ""; /* Necessary for pseudo-elements */
     position: fixed; /* Changed from absolute to fixed */
@@ -60,13 +64,12 @@ body::before {
     flex: 1;
     padding: 10px;
     border: 2px solid transparent; /* Default border */
-    transition: border-color 1.8s;
+    transition: transform 0.3s ease-in-out;
     border-radius:20px;
  }
 
 .bottom div:hover {
-    border-color: #FF0000; /* Border color on hover */
-    transform: scale(1.05); /* Scale effect */
+    transform: scale(1.2); /* Scale effect */
 }
 
  @media only screen and (max-height: 350px) {
@@ -78,7 +81,7 @@ body::before {
 
     .bottom {
         font-size:15px;
-        bottom:10%;
+        bottom:30%;
     }
 }
 
@@ -229,7 +232,7 @@ body::before {
 @media (max-width: 500px) and (min-height:420px) {
 
     .bottom {
-        bottom:22%;
+        bottom:28%;
         font-size:10px;
         margin-right:0px;
             padding:0px;

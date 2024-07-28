@@ -47,12 +47,6 @@ body::before {
     width: 80%;
 }
 
-#enter p span:hover {
-    font-size:32px;
-}
-
-
-
 /* below manages responsiveness */
 
 @media only screen and (max-height: 350px) {

@@ -49,11 +49,12 @@ font-size:23px;
 
 .bottom-centered p {
 font-size:23px;
+transition: transform 0.3s ease-in-out;
 }
 
 .bottom-centered p:hover{
-font-size:24px;
-}
+  transform: scale(1.1);
+  }
 
 .bottom-centered {
   text-align: center;
@@ -74,15 +75,6 @@ font-size:24px;
 
 
 /* below manages responsiveness */
-
-@media only screen and (max-height: 350px) {
-
-
-    .centered {
-    display:none;
-    }
-
-}
 
 
 
@@ -115,20 +107,20 @@ font-size:24px;
 
 
     .centered {
-        top:28%;
+        top:35%;
 
     }
 
     .bottom-centered {
-        bottom:13%;
+        bottom:16%;
     }
 
     .centered p{
-         font-size:24px;
+         font-size:20px;
     }
 
     .bottom-centered p{
-        font-size:26px;
+        font-size:24px;
     }
 
 
@@ -395,7 +387,7 @@ font-size:24px;
     }
 
     .bottom-centered {
-        bottom:20%;
+        bottom:18%;
     }
 
     .bottom-centered p{
@@ -426,4 +418,38 @@ font-size:24px;
 
 }
 
+@media only screen and (max-height: 600px) {
 
+
+    .centered {
+    display:none;
+    }
+
+  .bottom-centered {
+        bottom:30%;
+    }
+
+    .bottom-centered p{
+        font-size: 18px;
+    }
+
+
+}
+
+@media only screen and (max-width: 300px) {
+
+
+    .centered {
+    display:none;
+    }
+
+  .bottom-centered {
+        bottom:30%;
+    }
+
+    .bottom-centered p{
+        font-size: 12px;
+    }
+
+
+}

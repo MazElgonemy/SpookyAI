@@ -50,6 +50,7 @@ body::before {
     display: flex;
     flex-direction: column;
     height: 500px;
+
 }
 
 .messages {
@@ -111,4 +112,37 @@ body::before {
 
 .message-form button:hover {
     background-color: #0056b3;
+}
+
+
+@media only screen and (max-height: 700px) {
+
+
+  .chat-box {
+    height:300px;
+  }
+
+
+}
+
+@media only screen and (max-height: 500px) {
+
+
+  .chat-box {
+    height:200px;
+    font-size:15px;
+  }
+
+
+}
+
+@media only screen and (max-height: 350px) {
+
+
+  .chat-box {
+    height:150px;
+    font-size:11px;
+  }
+
+
 }
